@@ -1,6 +1,6 @@
 # dictionaryx
 
-English dictionary with about 120000 entries, based on Wordnet. 
+English dictionary with about 120.000 entries, based on Wordnet. 
 
 ## Dictionaries
 

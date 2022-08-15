@@ -1,0 +1,1 @@
+dart run $PSScriptRoot/dict.dart $args[0]

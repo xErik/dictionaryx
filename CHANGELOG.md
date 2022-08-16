@@ -9,3 +9,7 @@
 ## [0.1.1] - [August 15 2022].
 
 * File names.
+
+## [0.2.0] - [August 16 2022].
+
+* API changes.

@@ -6,10 +6,16 @@ import 'package:dictionaryx/dictionary_sa.dart';
 void main() {
 // Lookup an entry with synonyms and antonyms, only.
 
-  print(DictionaryReducedSA.hasEntry('assafef')); // false
-  print(DictionaryReducedSA.hasEntry('meeting')); // true
+  var dReducedSA = DictionaryReducedSA();
+  var dReducedMSA = DictionaryReducedMSA();
 
-  var entry = DictionaryReducedSA.getEntry('meeting');
+  var dSA = DictionarySA();
+  var dMSA = DictionaryMSA();
+
+  print(dReducedSA.hasEntry('assafef')); // false
+  print(dReducedSA.hasEntry('meeting')); // true
+
+  var entry = dReducedSA.getEntry('meeting');
   print(entry.word); // meeting
   print(entry.synonyms); // [Assemble, Contact, Adjoin, Forgather, See]
   print(entry.antonyms); // [diverge]
@@ -18,7 +24,7 @@ void main() {
 // A meaning-object comes with a list of optional explanations
 // and a list of optional contextual-meanings.
 
-  entry = DictionaryReducedMSA.getEntry('meeting');
+  entry = dReducedMSA.getEntry('meeting');
   print(entry.word); // meeting
   print(entry.synonyms); // [Assemble, Contact, Adjoin, Forgather, See]
   print(entry.antonyms); // [diverge]
@@ -40,8 +46,8 @@ void main() {
 // a larger memory footprint.
 
   // Smaller memory footprint, with no meanings.
-  entry = DictionarySA.getEntry('tree');
+  entry = dSA.getEntry('tree');
 
   // Larger memory footprint, with meanings.
-  entry = DictionaryMSA.getEntry('tree');
+  entry = dMSA.getEntry('tree');
 }

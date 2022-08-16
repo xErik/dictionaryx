@@ -1,6 +1,6 @@
 name: dictionaryx
 description: English dictionary with about 120.000 entries, based on Wordnet.
-version: 0.1.1
+version: 0.2.0
 repository: https://github.com/xErik/dictionaryx
 issue_tracker: https://github.com/xErik/dictionaryx/issues
 

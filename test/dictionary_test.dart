@@ -5,13 +5,19 @@ import 'package:dictionaryx/dictionary_sa.dart';
 import 'package:test/test.dart';
 
 void main() {
+  var dReducedSA = DictionaryReducedSA();
+  var dReducedMSA = DictionaryReducedMSA();
+
+  var dSA = DictionarySA();
+  var dMSA = DictionaryMSA();
+
   test('DictionaryReducedMSA, fail', () {
-    expect(DictionaryReducedMSA.hasEntry('assafef'), false);
+    expect(dReducedMSA.hasEntry('assafef'), false);
   });
 
   test('DictionaryReducedMSA', () {
-    expect(DictionaryReducedMSA.hasEntry('meeting'), true);
-    final entry = DictionaryReducedMSA.getEntry('meeting');
+    expect(dReducedMSA.hasEntry('meeting'), true);
+    final entry = dReducedMSA.getEntry('meeting');
     expect(entry.meanings.length, 4);
     expect(entry.synonyms.contains('Assemble'), true);
     expect(entry.antonyms.contains('diverge'), true);
@@ -21,8 +27,8 @@ void main() {
   });
 
   test('DictionaryReducedSA', () {
-    expect(DictionaryReducedSA.hasEntry('meeting'), true);
-    final entry = DictionaryReducedSA.getEntry('meeting');
+    expect(dReducedSA.hasEntry('meeting'), true);
+    final entry = dReducedSA.getEntry('meeting');
     expect(entry.meanings.length, 0);
     expect(entry.synonyms.contains('Assemble'), true);
     expect(entry.antonyms.contains('diverge'), true);
@@ -31,31 +37,31 @@ void main() {
   // Testing dicts with all entries
 
   test('DictionaryReducedMSA, fail', () {
-    expect(DictionaryMSA.hasEntry('assafef'), false);
+    expect(dMSA.hasEntry('assafef'), false);
   });
 
   test('DictionaryMSA', () {
-    expect(DictionaryMSA.hasEntry('meeting'), true);
-    final entry = DictionaryMSA.getEntry('meeting');
+    expect(dMSA.hasEntry('meeting'), true);
+    final entry = dMSA.getEntry('meeting');
     expect(entry.meanings.length, 4);
     expect(entry.synonyms.contains('Assemble'), true);
     expect(entry.antonyms.contains('diverge'), true);
   });
 
   test('DictionarySA', () {
-    expect(DictionarySA.hasEntry('meeting'), true);
-    final entry = DictionarySA.getEntry('meeting');
+    expect(dSA.hasEntry('meeting'), true);
+    final entry = dSA.getEntry('meeting');
     expect(entry.meanings.length, 0);
     expect(entry.synonyms.contains('Assemble'), true);
     expect(entry.antonyms.contains('diverge'), true);
   });
 
   test('length all', () {
-    expect(DictionarySA.length() > 100000, true);
+    expect(dSA.length() > 100000, true);
   });
 
   test('length reduced', () {
-    expect(DictionaryReducedSA.length() > 3000, true);
+    expect(dReducedSA.length() > 3000, true);
+    expect(dReducedSA.length() < 10000, true);
   });
-  print(DictionaryReducedSA.length());
 }

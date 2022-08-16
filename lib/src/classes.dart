@@ -60,7 +60,7 @@ class DictEntry {
 /// Abstract helper class.
 abstract class DictionaryAbs {
   /// Maps a string to POS-enum.
-  static POS getPos(String str) {
+  POS getPos(String str) {
     var pos = POS.NOUN;
     switch (str) {
       case 'Verb':

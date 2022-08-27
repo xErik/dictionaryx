@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:dictionaryx/src/dict_reduced_msa.dart';
+import 'package:dictionaryx/dictionary_msa_json.dart';
 
 main(List<String> args) {
   if (args.isEmpty) {
@@ -8,5 +8,5 @@ main(List<String> args) {
     print('USAGE: dart run dict.dart <WORD>');
     exit(0);
   }
-  print(DictReducedMSA.getEntry(args.elementAt(0)));
+  print(DictionaryMSAJson().getEntry(args.elementAt(0)));
 }

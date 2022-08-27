@@ -1,10 +1,39 @@
 ```dart
 import 'package:dictionaryx/dictionary_msa.dart';
+import 'package:dictionaryx/dictionary_msa_json.dart';
 import 'package:dictionaryx/dictionary_reduced_msa.dart';
 import 'package:dictionaryx/dictionary_reduced_sa.dart';
 import 'package:dictionaryx/dictionary_sa.dart';
 
 void main() {
+// -------------------------------------------------------
+// LOOKUP WORD IN JSON FILES (fast, but using file system)
+// -------------------------------------------------------
+
+  var dMSAJson = DictionaryMSAJson();
+
+  var entry = dMSAJson.getEntry('meeting');
+
+  print(entry.word); // meeting
+  print(entry.synonyms); // [Assemble, Contact, Adjoin, Forgather, See]
+  print(entry.antonyms); // [diverge]
+
+  // A meaning comes with a POS, description
+  // and optional contextual-meanings and optional examples.
+
+  print(entry.meanings.first.pos); // POS.NOUN
+  print(entry.meanings.first.description); // a formally arranged gathering
+
+  print(entry.meanings.first.hasMeanings()); // true
+  print(entry.meanings.first.hasExamples()); // true
+
+  print(entry.meanings.first.meanings.first); // Gathering
+  print(entry.meanings.first.examples.first); //"next year the meeting (...)
+
+// -------------------------------------------------------
+// LOOKUP WORD IN STATIC DART FILES (expanded in memory)
+// -------------------------------------------------------
+
 // Lookup an entry with synonyms and antonyms, only.
 
   var dReducedSA = DictionaryReducedSA();
@@ -16,7 +45,7 @@ void main() {
   print(dReducedSA.hasEntry('assafef')); // false
   print(dReducedSA.hasEntry('meeting')); // true
 
-  var entry = dReducedSA.getEntry('meeting');
+  entry = dReducedSA.getEntry('meeting');
   print(entry.word); // meeting
   print(entry.synonyms); // [Assemble, Contact, Adjoin, Forgather, See]
   print(entry.antonyms); // [diverge]
@@ -30,7 +59,7 @@ void main() {
   print(entry.synonyms); // [Assemble, Contact, Adjoin, Forgather, See]
   print(entry.antonyms); // [diverge]
 
-  // An meaning comes with a POS, description
+  // A meaning comes with a POS, description
   // and optional contextual-meanings and optional examples.
 
   print(entry.meanings.first.pos); // POS.NOUN

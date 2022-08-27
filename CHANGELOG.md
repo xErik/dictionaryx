@@ -13,3 +13,7 @@
 ## [0.2.0] - [August 16 2022].
 
 * API changes.
+
+## [0.2.1] - [August 27 2022].
+
+* Added JSON-based dictionary.

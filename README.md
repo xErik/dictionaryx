@@ -4,29 +4,39 @@ English dictionary with about 120.000 entries, based on Wordnet.
 
 ## Dictionaries
 
-This package offers four precompiled and optimized `dart` versions of the same base dictionary.
+This package offers four precompiled and optimized `dart` versions of the same base dictionary. 
+
+Additonally, a JSON-based dictionary is provided, which reads the entries from the file system and not from the memory.
+
+The dictionaries offer meaning (M), synonym (S) and antonym (A). In some cases the meaning (M) is left out to reduce the file size.
 
 Based on the selected dictionary, application startup time and memory footprint is impacted accordingly.
 
-**DictionaryMSA** (16.4 MB)
+---
+
+**DictionaryMSAJson** (1213 JSON files, each has a size of 15 KB)
 
 - About 120.000 entries. Meanings, synonyms and antonyms.
 
-**DictionarySA** (7.3 MB)
+**DictionaryMSA** (16.4 MB, Dart file)
+
+- About 120.000 entries. Meanings, synonyms and antonyms.
+
+**DictionarySA** (7.3 MB, Dart file)
 
 - About 120.000 entries. Synonyms and antonyms.
 
-**DictionaryReducedMSA** (1.8 MB)
+**DictionaryReducedMSA** (1.8 MB, Dart file)
 
 - About 3700 entries. Meanings, synonyms and antonyms.
 
-**DictionaryReducedSA** (274 KB)
+**DictionaryReducedSA** (274 KB, Dart file)
 
 - About 3700 entries. Synonyms and antonyms.
 
 ### Outlook
 
-The option to using the dictionaries by accessing raw text files (`assets`) will be added soon. This will decrease the memory footprint but increase lookup time by adding live parsing.
+Explaination of how to use this pure dart package in a Flutter project will follow.
 
 ## Installing
 
@@ -34,43 +44,32 @@ In your pubspec.yaml:
 
 ```yaml
 dependencies:
-  dictionaryx: ^0.2.0
+  dictionaryx: ^0.2.1
 ```
 ## How To Use
 
 ```dart
 import 'package:dictionaryx/dictionary_msa.dart';
+import 'package:dictionaryx/dictionary_msa_json.dart';
 import 'package:dictionaryx/dictionary_reduced_msa.dart';
 import 'package:dictionaryx/dictionary_reduced_sa.dart';
 import 'package:dictionaryx/dictionary_sa.dart';
 
 void main() {
-// Lookup an entry with synonyms and antonyms, only.
 
-  var dReducedSA = DictionaryReducedSA();
-  var dReducedMSA = DictionaryReducedMSA();
+// =======================================================
+// LOOKUP WORD IN JSON FILES (fast, but using file system)
+// =======================================================
 
-  var dSA = DictionarySA();
-  var dMSA = DictionaryMSA();
+// -------------------------------------------------------
+// With meanings (M) and synonyms (S) and antonyms (A).
+// -------------------------------------------------------
 
-  print(dReducedSA.hasEntry('assafef')); // false
-  print(dReducedSA.hasEntry('meeting')); // true
+  var dMSAJson = DictionaryMSAJson();
 
-  var entry = dReducedSA.getEntry('meeting');
-  print(entry.word); // meeting
-  print(entry.synonyms); // [Assemble, Contact, Adjoin, Forgather, See]
-  print(entry.antonyms); // [diverge]
+  var entry = dMSAJson.getEntry('meeting');
 
-// Lookup an entry with its meanings.
-// A meaning-object comes with a list of optional explanations
-// and a list of optional contextual-meanings.
-
-  entry = dReducedMSA.getEntry('meeting');
-  print(entry.word); // meeting
-  print(entry.synonyms); // [Assemble, Contact, Adjoin, Forgather, See]
-  print(entry.antonyms); // [diverge]
-
-  // An meaning comes with a POS, description
+  // A meaning comes with a POS, description
   // and optional contextual-meanings and optional examples.
 
   print(entry.meanings.first.pos); // POS.NOUN
@@ -82,14 +81,71 @@ void main() {
   print(entry.meanings.first.meanings.first); // Gathering
   print(entry.meanings.first.examples.first); //"next year the meeting (...)
 
+// =======================================================
+// LOOKUP WORD IN REDUCED DICTIONARY IN STATIC DART FILES 
+// =======================================================
+
+// -------------------------------------------------------
+// Lookup an entry with synonyms (S) and antonyms (A).
+// No meaing is provided.
+// -------------------------------------------------------
+  var dReducedSA = DictionaryReducedSA();
+
+  print(dReducedSA.hasEntry('assafef')); // false
+  print(dReducedSA.hasEntry('meeting')); // true
+
+  var entry = dReducedSA.getEntry('meeting');
+  print(entry.word); // meeting
+  print(entry.synonyms); // [Assemble, Contact, Adjoin, Forgather, See]
+  print(entry.antonyms); // [diverge]
+
+// -------------------------------------------------------
+// Lookup an entry with its meanings (M) and
+// synonyms (S) and antonyms (A).
+// A meaning-object comes with a list of optional explanations
+// and a list of optional contextual-meanings.
+// -------------------------------------------------------
+  var dReducedMSA = DictionaryReducedMSA();
+
+  entry = dReducedMSA.getEntry('meeting');
+  print(entry.word); // meeting
+  print(entry.synonyms); // [Assemble, Contact, Adjoin, Forgather, See]
+  print(entry.antonyms); // [diverge]
+
+  // A meaning comes with a POS, description
+  // and optional contextual-meanings and optional examples.
+
+  print(entry.meanings.first.pos); // POS.NOUN
+  print(entry.meanings.first.description); // a formally arranged gathering
+
+  print(entry.meanings.first.hasMeanings()); // true
+  print(entry.meanings.first.hasExamples()); // true
+
+  print(entry.meanings.first.meanings.first); // Gathering
+  print(entry.meanings.first.examples.first); //"next year the meeting (...)
+
+// =======================================================
+// LOOKUP WORD IN COMPLETE DICTIONARY IN STATIC DART FILES 
+// =======================================================
+
+// -------------------------------------------------------
 // In the same manner, the complete dictionary can be accessed.
 // Compared to the reduced dictionary, the complete dictionary has
 // a larger memory footprint.
+// -------------------------------------------------------
 
-  // Smaller memory footprint, with no meanings.
+// -------------------------------------------------------
+// Smaller memory footprint, with no meanings.
+// But synonyms (S) and antonyms (A).
+// -------------------------------------------------------
+  var dSA = DictionarySA();
   entry = dSA.getEntry('tree');
 
-  // Larger memory footprint, with meanings.
+// -------------------------------------------------------
+// Larger memory footprint, with meanings (M) and
+// synonyms (S) and antonyms (A).
+// -------------------------------------------------------
+  var dMSA = DictionaryMSA();
   entry = dMSA.getEntry('tree');
 }
 ```

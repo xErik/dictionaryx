@@ -44,7 +44,7 @@ In your pubspec.yaml:
 
 ```yaml
 dependencies:
-  dictionaryx: ^0.3.0
+  dictionaryx: ^0.3.3
 ```
 ## How To Use
 

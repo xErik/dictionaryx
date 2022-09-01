@@ -17,3 +17,7 @@
 ## [0.2.1] - [August 27 2022].
 
 * Added JSON-based dictionary.
+
+## [0.3.0] - [September 01 2022].
+
+* Class DictEntry and Enum POS are now public. Preparation for Flutter usage.

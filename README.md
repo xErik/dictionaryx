@@ -10,7 +10,7 @@ Additonally, a JSON-based dictionary is provided, which reads the entries from t
 
 The dictionaries offer meaning (M), synonym (S) and antonym (A). In some cases the meaning (M) is left out to reduce the file size.
 
-Based on the selected dictionary, application startup time and memory footprint is impacted accordingly.
+Based on the selected dictionary, application startup time and memory footprint are impacted accordingly.
 
 ---
 
@@ -44,7 +44,7 @@ In your pubspec.yaml:
 
 ```yaml
 dependencies:
-  dictionaryx: ^0.2.1
+  dictionaryx: ^0.3.0
 ```
 ## How To Use
 

@@ -1,4 +1,5 @@
-import 'package:dictionaryx/src/classes.dart';
+import 'package:dictionaryx/dictentry.dart';
+import 'package:dictionaryx/src/dict_abstract.dart';
 import 'package:dictionaryx/src/dict_reduced_sa.dart';
 
 /// Dictionary with limited words, only synonyms and antonyms.

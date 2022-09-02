@@ -47,7 +47,7 @@ jobs:
         run: flutter packages get
         working-directory: ./example/flutter_example/
       - name: Build Web
-        run: flutter build web
+        run: flutter build web --base-href "/dictionaryx/"
         working-directory: ./example/flutter_example/
 
 

@@ -1,0 +1,27 @@
+name: dictionaryx_flutter_example
+description: DictionaryX Flutter Example
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  url_launcher: ^6.1.5
+  # dictionaryx: 0.3.2
+  dictionaryx:
+    path: ./../../
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  

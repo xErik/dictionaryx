@@ -31,32 +31,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Content list
-        # You may pin to the exact commit or the version.
-        # uses: enricomarino/actions@cc077a8a196155a9d5dc6ebcd3ff2c8a8679506f
-        uses: enricomarino/actions@v2
-        #with:
-          # The folder to inspect
-        #  source: # default is /
-    
-      - name: Experiment
-        run: |
-          pwd
-          cd ./dictionaryx/example/flutter_example/
-          pwd
-
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
+
       - name: Flutter action
-        uses: subosito/flutter-action@v2.6.2
-        with:
-          args: pub get
-       
-      - name: build web
-        uses: steebchen/flutter@v1.1.0
-        with:
-          args: build apk --release
+        uses: subosito/flutter-action@v1
+      - name: Upgrades flutter
+        run: flutter upgrade
+        working-directory: ./example/flutter_example/
+      #- name: Enable Web
+      #  run: flutter config --enable-web
+      #  working-directory: ./example/flutter_example/
+      - name: Install dependencies
+        run: flutter packages get
+        working-directory: ./example/flutter_example/
+      - name: Build Web
+        run: flutter build web
+        working-directory: ./example/flutter_example/
+
+
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

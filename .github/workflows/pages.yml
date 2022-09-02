@@ -33,7 +33,9 @@ jobs:
 
       - name: Experiment
         run: |
-          cd ./example/flutter_example/
+          pwd
+          cd ./dictionaryx/example/flutter_example/
+          pwd
 
       - name: Setup Pages
         uses: actions/configure-pages@v2

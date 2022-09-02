@@ -33,3 +33,7 @@
 ## [0.3.3] - [September 01 2022].
 
 * Test deployment for for Flutter integration testing. Save to ignore, too.
+
+## [0.3.4] - [September 02 2022].
+
+* Flutter integration.

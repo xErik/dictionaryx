@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:dictionaryx/dictentry.dart';
 import 'package:dictionaryx/src/dict_abstract.dart';
-// import 'package:dictionaryx/src/dict_msa.dart';
 import 'package:dictionaryx/src/dictassets.dart';
 
 /// Complete dictionary with meanings, synonyms and antonyms.
@@ -26,8 +25,7 @@ class DictionaryMSAJson extends DictionaryAbs {
       return _currentJson;
     }
     String asset = _resolveAsset(word);
-    _currentJson =
-        jsonDecode(File('./lib/assets/$asset.json').readAsStringSync());
+    _currentJson = jsonDecode(File('./assets/$asset.json').readAsStringSync());
     _currentWord = word;
     return _currentJson;
   }

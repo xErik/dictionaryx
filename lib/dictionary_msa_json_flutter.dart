@@ -3,16 +3,10 @@ import 'dart:convert';
 import 'package:dictionaryx/dictentry.dart';
 import 'package:dictionaryx/src/dict_abstract.dart';
 import 'package:dictionaryx/src/dictassets.dart';
-
-/// Helper class
-abstract class AbstractAssetFileFetcherService {
-  Future<String> getAssetFileContent(String assetName);
-}
-
-AbstractAssetFileFetcherService? service;
+import 'package:flutter/services.dart';
 
 /// Complete dictionary with meanings, synonyms and antonyms.
-class DictionaryMSAJsonFlutter extends DictionaryAbs {
+class DictionaryMSAFlutter extends DictionaryAbs {
   String _currentWord = '';
   Map<String, dynamic> _currentJson = {};
 
@@ -31,13 +25,10 @@ class DictionaryMSAJsonFlutter extends DictionaryAbs {
       return _currentJson;
     }
     String asset = _resolveAsset(word);
-    // _currentJson =
-    //     jsonDecode(File('./lib/assets/$asset.json').readAsStringSync());
-    // _currentJson = jsonDecode(await rootBundle.loadString('$asset.json'));
 
-    _currentJson =
-        jsonDecode(await service!.getAssetFileContent('$asset.json'));
-    // _currentJson = jsonDecode(await rootBundle.loadString('$asset.json'));
+    _currentJson = jsonDecode(
+        await rootBundle.loadString('packages/dictionaryx/assets/$asset.json'));
+
     _currentWord = word;
     return _currentJson;
   }

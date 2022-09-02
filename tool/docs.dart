@@ -30,7 +30,31 @@ void main() {
   print(entry.meanings.first.examples.first); //"next year the meeting (...)
 
 // -------------------------------------------------------
-// LOOKUP WORD IN STATIC DART FILES (expanded in memory)
+// LOOKUP WORD IN JSON FILES (fast, using Flutter assets)
+// -------------------------------------------------------
+
+  // var dMSAJsonFlutter = DictionaryMSAFlutter();
+
+  // entry = await dMSAJsonFlutter.getEntry('meeting');
+
+  // print(entry.word); // meeting
+  // print(entry.synonyms); // [Assemble, Contact, Adjoin, Forgather, See]
+  // print(entry.antonyms); // [diverge]
+
+  // // A meaning comes with a POS, description
+  // // and optional contextual-meanings and optional examples.
+
+  // print(entry.meanings.first.pos); // POS.NOUN
+  // print(entry.meanings.first.description); // a formally arranged gathering
+
+  // print(entry.meanings.first.hasMeanings()); // true
+  // print(entry.meanings.first.hasExamples()); // true
+
+  // print(entry.meanings.first.meanings.first); // Gathering
+  // print(entry.meanings.first.examples.first); //"next year the meeting (...)
+
+// -------------------------------------------------------
+// LOOKUP WORD IN STATIC DART FILES (will expand in memory)
 // -------------------------------------------------------
 
 // Lookup an entry with synonyms and antonyms, only.

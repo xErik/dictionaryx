@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
-  final String title = 'DictionaryX Flutter Example';
+  final String title = 'DictionaryX Flutter Demo';
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();

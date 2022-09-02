@@ -37,3 +37,7 @@
 ## [0.3.4] - [September 02 2022].
 
 * Flutter integration.
+
+## [0.3.5] - [September 02 2022].
+
+* Added Flutter live demo: https://xerik.github.io/dictionaryx/

@@ -2,6 +2,8 @@
 
 English dictionary with about 120.000 entries, based on Wordnet. 
 
+A live Flutter demo can be found here: [https://xerik.github.io/dictionaryx/](https://xerik.github.io/dictionaryx/).
+
 ## Dictionaries
 
 This package offers four optimized `Dart` versions of the same base dictionary. 
@@ -54,11 +56,13 @@ In your pubspec.yaml:
 
 ```yaml
 dependencies:
-  dictionaryx: ^0.3.4
+  dictionaryx: ^0.3.5
 ```
 ## How To Use
 
 ### Flutter - Complete dictionary in JSON files
+
+A live Flutter demo can be found here: [https://xerik.github.io/dictionaryx/](https://xerik.github.io/dictionaryx/).
 
 An example showing how to access the dictionary using Flutter is
 provided in the `example/flutter_example/` folder. Please find an excerpt below.
@@ -66,7 +70,6 @@ provided in the `example/flutter_example/` folder. Please find an excerpt below.
 ```dart
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -74,11 +77,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final cText = TextEditingController();
   final dMSAJson = DictionaryMSAFlutter();
-
   DictEntry _entry = DictEntry('', [], [], []);
 
+  // Call this method to lookup a word
   void lookupWord() async {
-
     DictEntry? tmp;
     
     final txt = cText.text.trim();
@@ -95,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  // ...
+  // Render the content of _entry
 }
 ```
 
@@ -172,13 +174,11 @@ print(entry.meanings.first.examples.first); // "next year the meeting (...)
 ```
 ### Dart - Complete dictionary as a data literal
 
-```dart
-// -------------------------------------------------------
-// In the same manner, the complete dictionary can be accessed.
-// Compared to the reduced dictionary, the complete dictionary has
-// a larger memory footprint.
-// -------------------------------------------------------
+In the same manner, the complete dictionary can be accessed.
+Compared to the reduced dictionary, the complete dictionary has
+a larger memory footprint.
 
+```dart
 // -------------------------------------------------------
 // With meanings (M) and synonyms (S) and antonyms (A).
 // -------------------------------------------------------

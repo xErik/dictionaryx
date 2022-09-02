@@ -40,9 +40,9 @@ jobs:
       - name: Upgrades flutter
         run: flutter upgrade
         working-directory: ./example/flutter_example/
-      #- name: Enable Web
-      #  run: flutter config --enable-web
-      #  working-directory: ./example/flutter_example/
+      - name: Enable Web
+        run: flutter config --enable-web
+        working-directory: ./example/flutter_example/
       - name: Install dependencies
         run: flutter packages get
         working-directory: ./example/flutter_example/

@@ -61,7 +61,7 @@ dependencies:
 ### Flutter - Complete dictionary in JSON files
 
 An example showing how to access the dictionary using Flutter is
-provided in the `example/` folder. Please find an excerpt below.
+provided in the `example/flutter_example/` folder. Please find an excerpt below.
 
 ```dart
 class MyHomePage extends StatefulWidget {
@@ -97,6 +97,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // ...
 }
+```
+
+Run the example as follows:
+
+```bash
+cd example/flutter_example/
+flutter pub get
+flutter run
 ```
 
 ### Dart - Complete dictionary in JSON files
